@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@api": ["src/store/api.js"],
+      "@common/*": ["src/components/common/*"],
+      "@pages/*": ["src/components/pages/*"],
+      "@assets/*": ["src/assets/*"],
+      "@global_styles/*": ["src/global_styles/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@store/*": ["src/store/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

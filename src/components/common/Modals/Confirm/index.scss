@@ -1,0 +1,84 @@
+@import "mixins.scss";
+
+.root {
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 20px rgba(0,0,0,.23);
+    box-sizing: border-box;
+    color: #000;
+    flex-direction: column;
+    padding: 40px;
+    width: 100%;
+    max-width: 630px;
+    min-height: 290px;
+
+    header {
+        display: flex;
+        font-size: 35px;
+        margin-bottom: 32px;
+        text-transform: uppercase;
+    }
+
+    @include only-for-ie(){
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.title{
+    margin-right: auto;
+    line-height: 1;
+}
+
+.close-icon{
+    color: rgba(6, 6, 6, 0.23);
+    font-size: 23px;
+    cursor: pointer;
+    padding: 5px 5px 5px 25px;
+    box-sizing: border-box;
+}
+
+.description {
+    font-size: 19px;
+    font-weight: 300;
+    margin-bottom: auto;
+}
+
+.actions {
+    display: flex;
+    margin-left: auto;
+    > button:first-child {
+        margin-right: 20px;
+    }
+}
+
+
+
+
+// .button {
+//     margin: auto 10px 0;
+//     padding: 9px 24px;
+//     font-size: 15px;
+//     border-radius: 20px;
+//     text-transform: uppercase;
+//     min-width: 70px;
+//     &:first-child{
+//         margin-left: auto;
+//     }
+//     &:last-child{
+//         margin-right: 0;
+//     }
+// }
+
+// .cancel{
+//     border: 1px solid;
+//     color: #949494;
+//     background: transparent;
+//     &:hover{
+//         background: #949494;
+//         border-color: #949494;
+//         color: white;
+//     }
+// }

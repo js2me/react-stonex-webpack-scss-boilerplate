@@ -1,0 +1,18 @@
+@import "mixins.scss";
+
+
+.root{
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(194, 209, 228, 0.27);
+    overflow: hidden;
+    display: flex;
+}
+.loading-icon{
+    margin: auto;
+    @include respond-to(handhelds){
+        width: 320px;
+        height: 320px;
+    }
+}
