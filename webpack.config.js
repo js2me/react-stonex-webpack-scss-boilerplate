@@ -5,7 +5,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const Webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const optimize = process.argv.indexOf('-p') >= 0
 const outPath = path.join(__dirname, './dist')
@@ -15,10 +15,10 @@ const ENVIRONMENT = process.env.ENVIRONMENT || 'local'
 
 process.env.NODE_ENV = optimize ? 'production' : 'development'
 
-const copyFile = file =>
-  new CopyWebpackPlugin([
-    { from: `../${file}`, to: `../dist/${file}`, toType: 'file' },
-  ])
+// const copyFile = file =>
+//   new CopyWebpackPlugin([
+//     { from: `../${file}`, to: `../dist/${file}`, toType: 'file' },
+//   ])
 
 const localIdentName = (optimize ? '' : '[local]__') + '[hash:base64:5]'
 
@@ -69,19 +69,6 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
-      // {
-      //   test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-      //   // loader: 'file-loader',
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         name: '[name].[ext]',
-      //         outputPath: 'fonts/',
-      //       },
-      //     },
-      //   ],
-      // },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000',
@@ -124,7 +111,6 @@ module.exports = {
               sourceMap: !optimize,
               includePaths: [
                 path.resolve(sourcePath, './global_styles'),
-                // path.resolve(sourcePath, './node_modules'),
               ],
             },
           },
@@ -185,17 +171,13 @@ module.exports = {
   ].concat(
     optimize
       ? [
-          copyFile('.htaccess'),
-          copyFile('robots.txt'),
-          // copyFile('src/envs.js'),
+          // copyFile('.htaccess'),
+          // copyFile('robots.txt'),
         ]
       : [
           new CircularDependencyPlugin({
-            // exclude detection of files based on a RegExp
             exclude: /a\.js|node_modules/,
-            // add errors to webpack instead of warnings
             failOnError: false,
-            // set the current working directory for displaying module paths
             cwd: process.cwd(),
           }),
         ]
@@ -227,8 +209,6 @@ module.exports = {
       }
     : undefined,
   node: {
-    // workaround for webpack-dev-server issue
-    // https://github.com/webpack/webpack-dev-server/issues/60#issuecomment-103411179
     fs: 'empty',
     net: 'empty',
   },
